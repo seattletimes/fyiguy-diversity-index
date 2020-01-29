@@ -6,9 +6,10 @@ require("component-responsive-frame");
 var element = document.querySelector("leaflet-map");
 var L = element.leaflet;
 var map = element.map;
-
-var data = require("./diversity-index.geo.json");
 var geojson;
+
+var data = require("./diversity-index.geo.json"),
+	demographic_data = require("./demographics.json");
 
 var getColor = function(d) {
 	if (d > 0 && d <= 37.2) { return "#f0f9e8"; }
@@ -52,11 +53,23 @@ var resetHighlight = function(e) {
 
 var onEachFeature = function(feature, layer) {
 	var census_tract = feature.properties["NAMELSAD"],
-	diversity_index = feature.properties["diversity-index-by-census-tract_DIVERSITY INDEX 2018"];
+	diversity_index = feature.properties["diversity-index-by-census-tract_DIVERSITY INDEX 2018"],
+	demographics = demographic_data[feature.properties.GEOID];
 
 	var popupContent = `<div class="popup">
+		<div class="popup__hed">
 			<p class="popup__text"><strong>` + census_tract + `</strong></p>
 			<p class="popup__text">Diversity index: ` + diversity_index + `</p>
+		</div>
+			<p class="popup__text--small">Population: ` + demographics["Population"] + `</p>
+			<p class="popup__text--small">` + demographics["White"] + ` white</p>
+			<p class="popup__text--small">` + demographics["Black"] + ` Black</p>
+			<p class="popup__text--small">` + demographics["Native Am."] + ` Native American</p>
+			<p class="popup__text--small">` + demographics["Asian"] + ` Asian</p>
+			<p class="popup__text--small">` + demographics["Pacific Isl."] + ` Pacific Islander</p>
+			<p class="popup__text--small">` + demographics["Other"] + ` other</p>
+			<p class="popup__text--small">` + demographics["Multiracial"] + ` multiracial</p>
+			<p class="popup__text--small">` + demographics["Hispanic"] + ` Hispanic</p>
 		</div>`
 	layer.bindPopup(popupContent);
   layer.on({
