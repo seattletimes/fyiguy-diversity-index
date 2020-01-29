@@ -24,29 +24,28 @@
       </section>
 
       <div class="aspect-ratio-outer">
-
           <aside class="legend">
-          <h2 class="legend-hed">Optional map legend hed</h2>
+          <h2 class="legend-hed">Diversity index</h2>
           <ul class="scale">
             <li>
-              <div class="block" style="background-color: red"></div>
-                <p>Cherry</p>
+              <div class="block" style="background-color: #f0f9e8"></div>
+                <p>0-37.2</p>
             </li><!--
          --><li>
-              <span class="block" style="background-color: orange"></span>
-              <p>Orange</p>
+              <span class="block" style="background-color: #bae4bc"></span>
+              <p>37.2-49.4</p>
             </li><!--
          --><li>
-              <span class="block" style="background-color: yellow"></span>
-              <p>Lemon</p>
+              <span class="block" style="background-color: #7bccc4"></span>
+              <p>49.4-59.2</p>
             </li><!--
          --><li>
-              <span class="block" style="background-color: green"></span>
-              <p>Lime</p>
+              <span class="block" style="background-color: #43a2ca"></span>
+              <p>59.2-68.9</p>
             </li><!--
          --><li>
-              <span class="block" style="background-color: blue"></span>
-              <p>Blueberry</p>
+              <span class="block" style="background-color: #0868ac"></span>
+              <p>68.9-79</p>
             </li>
           </ul>
         </aside>
@@ -54,27 +53,6 @@
 
           <leaflet-map zoom=10>
             <tile-layer layer="cartoPositron"></tile-layer>
-            <geo-json>
-              <geo-data>
-                <%= t.include("states.geo.json") %>
-              </geo-data>
-              <geo-style>{ "weight": 1, "color": "#000", "opacity":0.1 }</geo-style>
-              <geo-palette property="CENSUSAREA">
-                <color-mapping max=10000 color="purple"></color-mapping>
-                <color-mapping min=10001 max=50000 color="blue"></color-mapping>
-                <color-mapping min=50001 max=100000 color="green"></color-mapping>
-                <color-mapping min=100001 max=200000 color="yellow"></color-mapping>
-                <color-mapping min=200001 color="orange"></color-mapping>
-              </geo-palette>
-              <geo-popup>
-                <h1 class="bigheader">{{NAME}}</h1>
-                <ul>
-                  <li>Size: {{CENSUSAREA}}</li>
-                  <li>State ID: {{STATE}}</li>
-                  <li>Geo ID: {{GEO_ID}}</li>
-                </ul>
-              </geo-popup>
-            </geo-json>
           </leaflet-map>
 
         </div>
