@@ -1,0 +1,107 @@
+@import "values";
+@import "flexbox";
+
+//defensive coding
+* {
+  //border-box, you're the best
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+
+  //Safari, you're the worst
+  -webkit-tap-highlight-color: transparent;
+}
+
+//elements
+body {
+  color: @df-off-black;
+  font-family: @df-serif;
+  font-size: @df-text-base;
+  line-height: @df-line-base;
+  padding: 0;
+  margin: 0;
+  //remove 300ms click delay in Safari, AKA still the worst
+  touch-action: manipulation;
+}
+
+main {
+  display: block;
+
+  &.interactive {
+    padding: 20px 10px;
+    margin: 20px auto;
+    border-top: 1px solid @df-light-gray;
+    border-bottom: 1px solid @df-light-gray;
+    font-family: @df-sans;
+  }
+}
+
+a {
+  color: @df-blue;
+  text-decoration: none;
+
+  &:visited {
+    color: @df-middle-gray;
+  }
+
+  &:hover, &:focus {
+    color: @df-navy;
+  }
+}
+
+h1, h2 {
+  color: @df-off-black;
+  margin: @df-line-base 0 (@df-line-base/2) 0;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 30 / 28;
+  letter-spacing: -0.5px;
+
+  @media @tablet {
+    font-size: 42px;
+    line-height: 46 / 42;
+    letter-spacing: -1px;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: @df-line-base;
+}
+
+//common style elements
+.publish-date {
+  font-size: 16px;
+  font-family: @df-sans;
+  color: @df-middle-gray;
+}
+.graphic-hed {
+  font-family: @df-sans;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+.graphic-chatter {
+  font-family: @df-sans;
+  font-size: 17px;
+  font-weight: normal;
+  text-align: center;
+}
+.data-source, .art-credit, .caption {
+  color: @df-middle-gray;
+  font-family: @df-sans;
+  font-size: 14px;
+}
+.data-source {
+  font-style: italic;
+  @media @tablet-up {
+    float: left;
+  }
+}
+.art-credit {
+  @media @tablet-up {
+    float: right;
+  }
+}
