@@ -5,8 +5,8 @@
       "path": "tasteless-abatement"
     },
     "live": {
-      "bucket": "",
-      "path": ""
+      "bucket": "projects.seattletimes.com",
+      "path": "2020/local/fyiguy-diversity-index"
     }
   },
   "title": "",
@@ -14,5 +14,7 @@
   "sheets": ["1MpGRNdRJ8hEGdG6FuPTmqc5P4BJgD0yiNXeVS2U4iYU"],
   "url": "",
   "slug": "",
-  "tags": []
+  "tags": [],
+  "embedded": true,
+  "production": true
 }
